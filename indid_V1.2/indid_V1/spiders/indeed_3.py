@@ -4,7 +4,10 @@ from datetime import datetime, timedelta
 def get_date(date_string):
     try:
         if date_string and date_string.find('hour')== -1: 
-            return int(date_string[3:5])
+            if date_string[1]=='-':        
+               return int(date_string[3:5])
+            else:
+               return int(date_string[0:2])
     except ValueError:
         return 0
 def get_state(a_location):
@@ -40,7 +43,7 @@ class Indeed1Spider(scrapy.Spider):
     
         for url in self.start_urls:
             yield scrapy.Request(url = url,
-                            callback = self.parse_first_result, headers={"User-Agent": "Mozilla/5.0"},
+                            callback = self.parse_first_result, headers={"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.105 Safari/537.36"},
                            meta={"proxy": "http://pxu15333-0:QvfYg4kOWGoW5plrJ$Ax@x.botproxy.net:8080"})
     def parse_first_result(self,response):
         global urls
@@ -56,12 +59,12 @@ class Indeed1Spider(scrapy.Spider):
             for url in urls:
                 print('it is processing the result page of :'+str(url))
                 yield scrapy.Request(url = url,
-                                 callback = self.parse_result_page,dont_filter=True, headers={"User-Agent": "Mozilla/5.0"},
+                                 callback = self.parse_result_page,dont_filter=True, headers={"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.105 Safari/537.36"},
                                meta={"proxy": "http://pxu15333-0:QvfYg4kOWGoW5plrJ$Ax@x.botproxy.net:8080"})
         else:
             print('the current url'+ response.request.url)
             yield scrapy.Request(url =response.request.url,
-                                 callback = self.parse_result_page,dont_filter=True, headers={"User-Agent": "Mozilla/5.0"},
+                                 callback = self.parse_result_page,dont_filter=True, headers={"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.105 Safari/537.36"},
                                meta={"proxy": "http://pxu15333-0:QvfYg4kOWGoW5plrJ$Ax@x.botproxy.net:8080"}) 
     def parse_result_page(self, response):
         
@@ -77,13 +80,19 @@ class Indeed1Spider(scrapy.Spider):
             print('found this to follow: '+ str(url))
         #sleep(np.random.uniform(10,32))
             yield response.follow(url = url,
-                            callback = self.parse_pages, headers={"User-Agent": "Mozilla/5.0"},
+                            callback = self.parse_pages, headers={"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.105 Safari/537.36"},
                        meta={"proxy": "http://pxu15333-0:QvfYg4kOWGoW5plrJ$Ax@x.botproxy.net:8080"})                               
     def parse_pages(self,response):
         print('going to parse a page...')
         company_name = response.xpath('//div[contains(@class,"jobsearch-DesktopStickyContainer-companyrating")]/div[1]//text()').extract_first()
-        date = response.xpath('//div[@class="jobsearch-JobMetadataFooter"]/text()').extract_first()
-        day = get_date(date)
+        date = response.xpath('//div[@class="jobsearch-JobMetadataFooter"]//span/text()').extract()
+        if len(date)<2:
+            scraped_d = date[0]
+        elif date[1] ==' - ':
+            scraped_d = date[2]
+        else:
+            scraped_d = date[1]
+        day = get_date(scraped_d)
         actual_date = get_actual_date(day).date()
         location = response.xpath('//div[contains(@class,"jobsearch-DesktopStickyContainer-companyrating")]/div[last()]/text()').extract_first()
         job_title = response.xpath('//div[contains(@class,"jobsearch-JobInfoHeader-title")]/h1/text()').extract_first()
@@ -96,7 +105,7 @@ class Indeed1Spider(scrapy.Spider):
         item['job_title']= job_title.encode('utf-8')
         item['company'] = company_name.encode('utf-8')
         item['location'] = location.encode('utf-8') 
-        item['date']=date.encode('utf-8')
+        item['date']=scraped_d.encode('utf-8')
         item['description']	= job_description.encode('utf-8')
         item['day']=day
         item['posted_date']	= actual_date	
