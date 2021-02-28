@@ -100,7 +100,6 @@ class Indeed1Spider(scrapy.Spider):
                 for dt in possible_val:
                     if dt in txt:
                         scraped_d = txt
-        
         day = get_date(scraped_d)
         actual_date = get_actual_date(day).date()
         location = response.xpath('//div[contains(@class,"jobsearch-DesktopStickyContainer-companyrating")]/div[last()]/text()').extract_first()
