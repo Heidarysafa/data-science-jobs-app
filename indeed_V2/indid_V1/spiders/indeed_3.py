@@ -107,7 +107,7 @@ class Indeed1Spider(scrapy.Spider):
         day = get_date(scraped_d)
         actual_date = get_actual_date(day).date()
         location = response.xpath('//div[contains(@class,"jobsearch-DesktopStickyContainer-companyrating")]/div[last()]/text()').extract_first()
-        if location is None: # 2021 error for some responses edge browser way
+        if location is None or ',' not in location: # 2021 error for some responses edge browser way
             location = response.xpath('//div[contains(@class,"jobsearch-DesktopStickyContainer-companyrating")]/following-sibling::div/text()').extract_first()
         job_title = response.xpath('//div[contains(@class,"jobsearch-JobInfoHeader-title")]/h1/text()').extract_first()
         state = get_state(location)

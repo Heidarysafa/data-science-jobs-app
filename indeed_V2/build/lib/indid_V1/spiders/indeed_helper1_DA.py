@@ -94,21 +94,16 @@ class Indeed1Spider(scrapy.Spider):
             else:
                 scraped_d = date[1]
         except:
-            pass
-        try:
             possible_val = ['Just posted', 'days ago', 'Today','day ago']
             alt_dates =  response.xpath('//div[@class="jobsearch-JobMetadataFooter"]/div/text()').extract()
             for txt in alt_dates:
                 for dt in possible_val:
                     if dt in txt:
                         scraped_d = txt
-        except:
-            pass
-        
         day = get_date(scraped_d)
         actual_date = get_actual_date(day).date()
         location = response.xpath('//div[contains(@class,"jobsearch-DesktopStickyContainer-companyrating")]/div[last()]/text()').extract_first()
-        if location is None: # 2021 error for some responses edge browser way
+        if location is None or ',' not in location: # 2021 error for some responses edge browser way
             location = response.xpath('//div[contains(@class,"jobsearch-DesktopStickyContainer-companyrating")]/following-sibling::div/text()').extract_first()
         job_title = response.xpath('//div[contains(@class,"jobsearch-JobInfoHeader-title")]/h1/text()').extract_first()
         state = get_state(location)
