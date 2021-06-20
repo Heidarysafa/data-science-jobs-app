@@ -1,3 +1,0 @@
-[scrapy]
-settings = indid_V1.settings
-
