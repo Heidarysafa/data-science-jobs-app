@@ -19,6 +19,7 @@ The growth of the data science field requires better tools to understand such a 
 
 .. |arxiv| image:: https://img.shields.io/badge/arXiv-XXXX.XXXX-red.svg
     :target: https://arxiv.org/abs/XXXXXXX
+    
 .. |GitHublicense| image:: https://img.shields.io/badge/licence-GPL-blue.svg
    :target: ./LICENSE
 
