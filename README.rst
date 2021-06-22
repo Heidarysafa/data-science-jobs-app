@@ -22,7 +22,7 @@ The growth of the data science field requires better tools to understand such a 
 .. |GitHublicense| image:: https://img.shields.io/badge/licence-GPL-blue.svg
    :target: ./LICENSE
 
-.. |ResearchGate| image:: https://img.shields.io/badge/ResearchGate-RMDL-blue.svg?style=flat
+.. |ResearchGate| image:: https://img.shields.io/badge/ResearchGate-Data-blue.svg?style=flat
    :target: https://www.researchgate.net/publication/352465534_Toward_Knowledge_Discovery_Framework_for_Data_Science_Job_Market_in_the_United_States
 
 .. |twitter| image:: https://img.shields.io/twitter/url/http/shields.io.svg?style=social
