@@ -17,8 +17,8 @@ The growth of the data science field requires better tools to understand such a 
 .. |Demo| image:: https://img.shields.io/badge/Demo-V.1.1-orange
      :target: https://dsi-usa2.herokuapp.com/
 
-.. |arxiv| image:: https://img.shields.io/badge/arXiv-XXXX.XXXX-red.svg
-    :target: https://arxiv.org/abs/XXXXXXX
+.. |arxiv| image:: https://img.shields.io/badge/arXiv-2106.11077-red.svg
+    :target: https://arxiv.org/abs/2106.11077
     
 .. |GitHublicense| image:: https://img.shields.io/badge/licence-GPL-blue.svg
    :target: ./LICENSE
