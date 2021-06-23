@@ -2,7 +2,7 @@
 
 
 Referenced paper : `Toward Knowledge Discovery Framework for Data Science Job Market in the United States
-Classification <https://arxiv.org/abs/1805.01890>`__
+Classification <https://arxiv.org/abs/2106.11077>`__
 
 |pic|
 
