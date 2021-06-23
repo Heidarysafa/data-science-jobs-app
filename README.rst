@@ -12,6 +12,30 @@ Toward Knowledge Discovery Framework for Data Science Job Market in the United S
 The growth of the data science field requires better tools to understand such a fast-paced growing domain. Moreover, individuals from different backgrounds became interested in following a career as data scientists. Therefore, providing a quantitative guide for individuals and organizations to understand the skills required in the job market would be crucial. This paper introduces a framework to analyze the job market for data science-related jobs within the US while providing an interface to access insights in this market. The proposed framework includes three sub-modules allowing continuous data collection, information extraction, and a web-based dashboard visualization to investigate the spatial and temporal distribution of data science-related jobs and skills. The result of this work shows important skills for the main branches of data science jobs and attempts to provide a skill-based definition of these data science branches. The current version of this application is deployed on the web and allows individuals and institutes to investigate skills required for data science positions through the industry lens.
 
 
+
+Error and Comments:
+===================
+
+Send an email to mh4pk@virginia.edu
+
+Citation:
+=========
+
+.. code:: bash
+
+    @inproceedings{heidarysafa2021knowledge,
+    title={Toward Knowledge Discovery Framework for Data Science Job Market in the United States},
+    author={Mojtaba Heidarysafa and Kamran Kowsari and Masoud Bashiri and Donald E. Brown},
+    year={2021},
+    eprint={2106.11077},
+    archivePrefix={arXiv},
+    primaryClass={cs.CY}
+    }
+
+
+
+
+
 .. |pic| image:: docs/animation.gif
 
 .. |Demo| image:: https://img.shields.io/badge/Demo-V.1.1-orange
