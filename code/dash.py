@@ -2,15 +2,10 @@
 """
 Created on Sat Jan  9 21:43:28 2021
 
-@author: mh4pk
+@author: mojtaba heidarysafa
 """
 
-# -*- coding: utf-8 -*-
-"""
-Created on Mon Jan  4 14:51:28 2021
 
-@author: mh4pk
-"""
 #from app_sub import top_skill_list,us_state_abbrev,list_of_us_codes, modify_start_end_date
 import dash
 import dash_core_components as dcc
@@ -25,12 +20,6 @@ import pandas as pd
 import time
 import pymysql #version 0.9.2
 
-# -*- coding: utf-8 -*-
-"""
-Created on Mon Jan  4 14:47:36 2021
-
-@author: mh4pk
-"""
 from pandas.tseries.offsets import DateOffset
 
 list_of_us_codes = ['AK', 'AL', 'AR', 'AS', 'AZ', 'CA', 'CO', 'CT', 'DC', 'DE', 'FL', 'GA', 'GU', 'HI',
@@ -89,16 +78,7 @@ us_state_abbrev = {
     'WI': 'Wisconsin',
     'WY': 'Wyoming',
 }
-top_skill_list = ['machine learning', 'python', 'sql', 'programming', 'excel', 'statistics', 'cloud', 'data analysis',
-                  'algorithms',
-                  'r', 'databases', 'mathematics', 'java', 'visualization', 'tableau', 'aws', 'spark', 'dashboards',
-                  'sas', 'deep learning',
-                  'c++', 'hadoop', 'tensorflow', 'etl', 'scala', 'computer vision', 'nlp', 'nosql', 'hive', 'matlab',
-                  'pytorch', 'keras', 'powerbi',
-                  'google cloud', 'spss', 'time series', 'version control', '.net', 'reinforcement learning',
-                  'anomaly detection', 'mxnet',
-                  'decision trees', 'bioinformatics', 'caffe', 'feature engineering', 'information retrieval', 'stata',
-                  'text mining', 'pyspark']
+
 
 
 ###### count plot prep weeks
@@ -126,12 +106,14 @@ def modify_start_end_date(date, forward=True):
             return date
 
 '''
-host = "database-job-posts.c1qytdm4eno0.us-east-1.rds.amazonaws.com"
+###### in case of connecting to 
+host = "your_database_on_amazon.....rds.amazonaws.com"
 
 port =int(3306)
 dbname="job_posts"
-user="timaun4db"
-password="WSsmdIep4db2e"
+user="yourusername"
+password="yourpassword"
+##### create connection with parameters you need
 conn = pymysql.connect(host, user=user, port=port, passwd=password, db=dbname)
 start ="""2020-04-10"""
 end = """2020-05-10"""
