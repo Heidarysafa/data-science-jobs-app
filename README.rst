@@ -103,7 +103,7 @@ Citation:
 .. |arxiv| image:: https://img.shields.io/badge/arXiv-2106.11077-red.svg
     :target: https://arxiv.org/abs/2106.11077
     
-.. |GitHublicense| image:: https://img.shields.io/badge/licence-GPL-blue.svg
+.. |GitHublicense| image:: https://img.shields.io/badge/licence-AGPL-blue.svg
    :target: ./LICENSE
 
 .. |ResearchGate| image:: https://img.shields.io/badge/ResearchGate-blue.svg?style=flat
